@@ -1,0 +1,15 @@
+$octave -q <scriptname>
+
+or
+
+$octave -q
+octave:1>pwd
+@path
+#show the path where the octave will search for scripts
+
+octave:2><scriptname>
+@answer
+#run the script
+
+
+obs: Octave scripts has .m extension

@@ -1,0 +1,6 @@
+		::Octave::
+
+http://www-mdp.eng.cam.ac.uk/web/CD/engapps/octave/octavetut.pdf
+http://www.tutorialspoint.com/matlab/matlab_gnu_octave.htm
+http://en.flossmanuals.net/command-line/gnu-octave/
+		::Simplex::
