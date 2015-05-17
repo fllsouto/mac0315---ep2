@@ -1,4 +1,13 @@
 #! /bin/octave -qf
+#Universidade de Sao Paulo - USP
+#Instituto de Matematica e Estatistica
+#
+#MAC0315 - Programacao linear
+#Exercicio Programa II - Implementacao da Fase 2 do Metodo Simplex
+#Prof : Ernesto G. Birgin
+#
+#Fellipe Souto Sampaio - 7990422
+#Lucas Romão Silva - 8536214  
 
 function c_bar = calculate_c_bar (c, j, p_line, A)
   c_bar = c(j) - p_line*A(:, j);
@@ -42,8 +51,8 @@ function [ind v] = simplex(A, b, c, m, n, x)
   B_inv = inv(A(:, base));
   count = 0;
   while (true)
-    printf("\n-------------------------------------------------------------------------\n");
-    printf("Iterando ; %d\n", count);
+    printf("\n---------------------------------------------------\n");
+    printf("Iterando : %d\n", count);
     for k=1:m
       printf("%d %f\n",base(k),xb(k));
     endfor
@@ -105,30 +114,20 @@ function [ind v] = simplex(A, b, c, m, n, x)
 
 endfunction
 
-#m = 2; 
-#n = 4;
-#A = [2,1,1,0;1,2,0,1];
-#b = [4;3];
-#base = [1,4];
-#c = [-1, -1, 0, 0];
-#m = 3;
-#n = 6;
-#A = [ 1, 2, 2, 1, 0, 0; 
-#        2, 1, 2, 0, 1, 0;
-#        2, 2, 1, 0, 0, 1;];
-#b = [20; 20; 20];
-#base = [4, 5, 6];
-#c = [-10, -12, -12, 0, 0, 0];
-A = [4.73, -4.73,  10.3,  -10.3, -1,  0, 0, 0, 0;
-    -0.83,  0.83,  1.05,  -1.05,  0, -1, 0, 0, 0;
-    -1.56,  1.56, -0.02,   0.02,  0,  0, 1, 0, 0;
-    -2.11,  2.11, 10.22, -10.22,  0,  0, 0, 1, 0;
-     8.32, -8.32, 12.38, -12.38,  0,  0, 0, 0, 1];
-b = [4.88; -3.61; 1.78; 77.52; 120.26];
-c = [1.5; -1.5; -0.25; 0.25; 0; 0; 0; 0; 0]';
-n = 9;
-m = 5;
-base = [1, 4, 7, 8, 9];
+
+##########################################################
+#Defina aqui as variaveis (A, b, c, m, n , base)##########
+##########################################################
+
+A = [1, 2, 2, 1, 0, 0; 2, 1, 2, 0, 1, 0; 2, 2, 1, 0, 0, 1]
+b = [20;20;20]
+c = [-10, -12, -12, 0, 0, 0]
+m = 3
+n = 6
+base = [4,5,6]
+
+##########################################################
+
 x = zeros(n , 1);
 x(base) = A(:,base) \ b;
 [ind v] = simplex(A, b, c, m, n, x);
