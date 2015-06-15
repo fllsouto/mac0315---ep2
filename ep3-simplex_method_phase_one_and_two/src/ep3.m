@@ -155,7 +155,9 @@ function [ind, x, d] = simplex(A, b, c, m, n)
   A_line = [A, eye(m)];
   x_line = [zeros(n, 1); b];
   c_line = [zeros(1, n), ones(1, m)];
-  
+  printf("\n---------------------------------------------------\n");
+  printf("Fase 1\n");
+  printf("\n---------------------------------------------------\n");
   [ind, v, last_base, B_inv] = simplex_phase_two(A_line, b, c_line, m, m + n, x_line, eye(m), base);
   if(c_line*v != 0 )
     ind = 1;
@@ -163,6 +165,9 @@ function [ind, x, d] = simplex(A, b, c, m, n)
     d = 0;
   else
     [base, new_b, new_B_inv, new_A, new_m] = prepare_to_phase_two(A, b, B_inv, m, n, last_base);
+    printf("\n---------------------------------------------------\n");
+    printf("Fase 2\n");
+    printf("\n---------------------------------------------------\n");
     [ind, v, last_base, B_inv] = simplex_phase_two(new_A, new_b, c, new_m, n, v, new_B_inv, base);
     if(ind == 0)
       x = v;
@@ -187,7 +192,6 @@ b = [1;-2];
 c = [1,1,0,0];
 m = 2;
 n = 4;
-
 [ind, x, d] = simplex(A, b, c, m, n);
 
 switch(ind)
