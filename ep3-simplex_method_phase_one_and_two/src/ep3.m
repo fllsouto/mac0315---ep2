@@ -49,9 +49,8 @@ function [ind, v, last_base, last_B_inverse] = simplex_phase_two(A, b, c, m, n, 
     printf("\nValor da funcao objetivo : %f\n\n", c(base)*xb);
 
     p_line = c(base)*B_inv;
-    is_base = zeros(1:n);
+    is_base = zeros(1, n);
     is_base(base) = 1;
-
     indx_j = 0;
     achou = 0;
     c_bar = zeros(n, 1);
@@ -187,11 +186,15 @@ endfunction
 #Defina aqui as variaveis (A, b, c, m, n , base)##########
 ##########################################################
 
-A = [-1,1,1,0;1,1,0,1];
-b = [1;-2];
-c = [1,1,0,0];
-m = 2;
-n = 4;
+A = [4.73, -4.73,  10.3,  -10.3, -1,  0, 0, 0, 0;
+    -0.83,  0.83,  1.05,  -1.05,  0, -1, 0, 0, 0;
+    -1.56,  1.56, -0.02,   0.02,  0,  0, 1, 0, 0;
+    -2.11,  2.11, 10.22, -10.22,  0,  0, 0, 1, 0;
+     8.32, -8.32, 12.38, -12.38,  0,  0, 0, 0, 1];
+b = [4.88; -3.61; 1.78; 77.52; 120.26];
+c = [1.5; -1.5; -0.25; 0.25; 0; 0; 0; 0; 0]';
+n = 9;
+m = 5;
 [ind, x, d] = simplex(A, b, c, m, n);
 
 switch(ind)
